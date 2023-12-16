@@ -1,7 +1,33 @@
-import { Box, Flex ,Link } from "@chakra-ui/react";
+import {  Avatar, Box, Flex ,Link, Tooltip } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
-import {InstagramLogo, InstagramMobileLogo} from "../../assets/constants"
+import { InstagramLogo, InstagramMobileLogo, NotificationsLogo, SearchLogo, CreatePostLogo } from "../../assets/constants"
+import { AiFillHome } from "react-icons/ai";
+import { BiLogOut } from "react-icons/bi";
 const Sidebar = () => {
+    const sidebarItems = [
+        {
+            icon: <AiFillHome  size={25}/>,
+                text: "Home",
+                link: "/"
+        },
+                {
+                   icon: <SearchLogo />,
+                text: "Search",
+                },
+                     {
+                   icon: <NotificationsLogo />,
+                text: "Notifications",
+                },
+                 {
+                   icon: <CreatePostLogo />,
+                text: "Create",
+                },
+                 {
+                   icon: <Avatar size={"sm"} name="Newton Kamau" src="/profilepic.jpg" />,
+                    text: "Profile",
+                    link: "/newtonkamau"
+                }
+    ]
   return (
       <Box
           height={ "100vh" }
@@ -24,7 +50,68 @@ const Sidebar = () => {
                   w={10}
               >
                 <InstagramMobileLogo />  
-          </Link>
+              </Link>
+              <Flex direction={ "column" } gap={ 5 } cursor={ "pointer" }>
+                  { sidebarItems.map((item, index) => (
+                      <Tooltip
+                          label={ item.text }
+                          key={ index }
+                          hasArrow
+                          placement="right"
+                          ml={ 1 }
+                          openDelay={ 500 }
+                          display={ { base: "block", md: "none" } }
+                      >
+                          <Link
+                              to={ item.link || null }
+                              as={ RouterLink }
+                              p={ 2 }
+                              borderRadius={ 6 }
+                              _hover={ { bg: "whiteAlpha.400" } }
+                              border={ 2 }
+                              display={"flex"}
+                              gap={ 4 }NotificationsLogo
+                              w={ {base:10,md:"full"} }
+                              alignItems={ "center" }
+                              justifyContent={{base:"center",md:"flex-start"}}
+                          >
+                              { item.icon }
+                              <Box display={ { base: "none", md: "block" } }>
+                                  {item.text}
+                              </Box>
+                          </Link>
+                      </Tooltip>
+                  ))
+                  }
+              </Flex>
+                <Tooltip
+                          label={ "Logout"}
+                          hasArrow
+                          placement="right"
+                          ml={ 1 }
+                          openDelay={ 500 }
+                          display={ { base: "block", md: "none" } }
+                      >
+                          <Link
+                              to={ "/auth" }
+                              as={ RouterLink }
+                              p={ 2 }
+                              borderRadius={ 6 }
+                              _hover={ { bg: "whiteAlpha.400" } }
+                              border={ 2 }
+                              display={"flex"}
+                              gap={ 4 }NotificationsLogo
+                              w={ {base:10,md:"full"} }
+                              alignItems={ "center" }
+                              justifyContent={{base:"center",md:"flex-start"}}
+                            mt={"auto"}       
+                  >
+                      <BiLogOut size={ 25 } />
+                              <Box display={ { base: "none", md: "block" } }>
+                            Logout
+                      </Box>
+                          </Link>
+                      </Tooltip>
           </Flex>  
 </Box>
 
