@@ -2,7 +2,15 @@ import { Box, VStack, Image, Input, Button, Flex,Text } from "@chakra-ui/react";
 import { useState } from "react";
 
 const AuthForm = () => {
-    const [isLogin,setIsLogin] = useState(false)
+    const [isLogin, setIsLogin] = useState(false);
+    const [inputs, setInputs] = useState({
+        email: '',
+        password: '',
+        confirmPassword: ''
+    });
+    const handleAuth = () => { 
+        console.log(inputs)
+    }
     return (
       <>
       <Box border='1px solid gray' borderRadius='4' padding='5'>
@@ -11,25 +19,34 @@ const AuthForm = () => {
               <Input
                   type="text"
                   placeholder='Phone number, username or email'
-                    fontSize='14px'
+                        fontSize='14px'
+                        value={ inputs.email }
+                        onChange={ (e) => setInputs({ ...inputs, email: e.target.value }) }
+                    
               />
               <Input
                   type="password"
                   placeholder='Password'
-                    fontSize='14px'
-              />
+                        fontSize='14px'
+                        value={ inputs.password }
+                        onChange={ (e) => setInputs({ ...inputs, password: e.target.value }) }
+                                      />
               { !isLogin ? (
                <Input
                   type=" confirm password"
-                  placeholder='confirm passord'
-                  fontSize='14px'
+                  placeholder='confirm password'
+                            fontSize='14px'
+                            value={ inputs.confirmPassword }
+                            onChange={ (e) => setInputs({ ...inputs, confirmPassword: e.target.value }) }
               />
               ): null
               }
               <Button
                   colorScheme='blue'
                   fontSize='14'
-                  size='sm'
+                        size='sm'
+                        w='full'
+                        onClick={handleAuth}
               >
                   {isLogin ? 'Login In' : 'Sign Up'}
               </Button>
