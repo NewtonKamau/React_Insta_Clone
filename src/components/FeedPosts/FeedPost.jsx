@@ -7,9 +7,10 @@ const FeedPost = () => {
       <>      
       <FeedHeader />
         <Box>
-                <Image src='./img1.png' alt='user profile pic' />
-                <FeedFooter />
+          <Image src='./img1.png' alt='user profile pic' />
+            
         </Box>
+     <FeedFooter />
       </>
   )
 }
