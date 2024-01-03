@@ -2,17 +2,17 @@ import { Box, Button, Flex, Input, InputGroup, InputRightElement, Text } from "@
 import { useState } from "react";
 import { CommentLogo, NotificationsLogo, UnlikeLogo } from "../../assets/constants";
 
-const FeedFooter = ({likes}) => {
+const FeedFooter = () => {
   const [liked, setLiked] = useState(false)
-  const [like, setLikes] = useState(1000)
+  const [likes, setLikes] = useState(10)
   const handledLike = () => {
     setLiked(!liked)
     if (liked) {
       setLikes(false)
-      setLikes(like - 1)
+      setLikes(likes - 1)
     } else {
       setLikes(true)
-      setLikes(like + 1)
+      setLikes(likes + 1)
     }
   }
   return (
