@@ -2,15 +2,15 @@ import { Box,Image } from "@chakra-ui/react";
 import { FeedHeader } from "./FeedHeader";
 import FeedFooter from "./FeedFooter";
 
-const FeedPost = () => {
+const FeedPost = ({img,username,avator}) => {
     return (
       <>      
-      <FeedHeader />
+      <FeedHeader img={img} username={username} avator={avator} />
         <Box>
-          <Image src='./img1.png' alt='user profile pic' />
+          <Image src={img} alt={username} />
             
         </Box>
-     <FeedFooter />
+     <FeedFooter username={username} />
       </>
   )
 }

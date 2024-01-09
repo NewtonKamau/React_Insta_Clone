@@ -1,12 +1,12 @@
 import { Avatar, Box, Flex,Text } from "@chakra-ui/react";
 
-export const FeedHeader = () => {
+export const FeedHeader = ({username,avator}) => {
   return (
     <Flex justifyContent={ 'space-between' } alignItems={ 'center' }my={2} w={ 'full' }>
       <Flex alignItems={'center'} gap={2} size={'sm'}>
-        <Avatar src="./img1.png" alt='user profile pic' />
+        <Avatar src={avator} alt={username} />
         <Flex fontSize={ 12 } fontWeight={ 'bold' } gap={ 2 }>
-          NewtonKamau
+          {username}
       <Box color={'gray.500'}> 1w</Box>
         </Flex>
       </Flex>
