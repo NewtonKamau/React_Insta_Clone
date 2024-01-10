@@ -16,7 +16,7 @@ const AuthForm = () => {
             alert('Please fill all the fields');
             return;
         }
-        navigate('/home');
+        navigate('/');
     }
     return (
       <>

@@ -32,7 +32,7 @@ const FeedFooter = ({username}) => {
         {likes} likes
       </Text>
       <Text fontSize={ 'sm' } fontWeight={ 700 }>
-        {username }{''}
+        {username } {''}
         <Text as={ 'span' } fontWeight={ 400 }>
           Feeling  good
         </Text>
