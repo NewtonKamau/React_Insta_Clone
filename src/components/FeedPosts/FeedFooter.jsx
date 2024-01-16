@@ -2,46 +2,50 @@ import { Box, Button, Flex, Input, InputGroup, InputRightElement, Text } from "@
 import { useState } from "react";
 import { CommentLogo, NotificationsLogo, UnlikeLogo } from "../../assets/constants";
 
-const FeedFooter = ({username}) => {
-  const [liked, setLiked] = useState(false)
-  const [likes, setLikes] = useState(10)
+const FeedFooter = ({ username, isProfilePage }) => {
+  const [liked, setLiked] = useState(false);
+  const [likes, setLikes] = useState(10);
   const handledLike = () => {
-    setLiked(!liked)
+    setLiked(!liked);
     if (liked) {
-      setLikes(false)
-      setLikes(likes - 1)
+      setLikes(false);
+      setLikes(likes - 1);
     } else {
-      setLikes(true)
-      setLikes(likes + 1)
+      setLikes(true);
+      setLikes(likes + 1);
     }
-  }
+  };
   return (
-    <Box mb={10}>
+    <Box mb={ 10 } marginTop={ 'auto' }>
       <Flex alignItems={ 'center' } gap={ 4 } w={ 'full' } pt={ 0 } mb={ 2 } mt={ 4 }>
         <Box onClick={ handledLike }
           cursor={ 'pointer' }
-          fontSize={18}
+          fontSize={ 18 }
         >
-{!liked ?(<NotificationsLogo />) : ( <UnlikeLogo />)}
+          { !liked ? (<NotificationsLogo />) : (<UnlikeLogo />) }
         </Box>
-        <Box cursor={ 'pointer' } fontSize={18}>
-          <CommentLogo/>
+        <Box cursor={ 'pointer' } fontSize={ 18 }>
+          <CommentLogo />
         </Box>
       </Flex>
-      <Text fontWeight={600} fontSize={'sm'}>
-        {likes} likes
+      <Text fontWeight={ 600 } fontSize={ 'sm' }>
+        { likes } likes
       </Text>
-      <Text fontSize={ 'sm' } fontWeight={ 700 }>
-        {username } {''}
-        <Text as={ 'span' } fontWeight={ 400 }>
-          Feeling  good
-        </Text>
+      { !isProfilePage && (
+        <>
+          <Text fontSize={ 'sm' } fontWeight={ 700 }>
+            { username } { '' }
+            <Text as={ 'span' } fontWeight={ 400 }>
+              Feeling  good
+            </Text>
 
-      </Text>
-      <Text fontSize={ 'sm' } color={ 'gray' } >
-        View all 1,000 comments
-      </Text>
-      <Flex alignItems={'center'} gap={2} justifyContent={'space-between'}>
+          </Text>
+          <Text fontSize={ 'sm' } color={ 'gray' } >
+            View all 1,000 comments
+          </Text>
+        </>
+      ) }
+      <Flex alignItems={ 'center' } gap={ 2 } justifyContent={ 'space-between' }>
         <InputGroup>
           <Input variant={ 'flushed' } placeholder="add a comment...." fontSize={ 14 } />
           <InputRightElement>
@@ -51,13 +55,13 @@ const FeedFooter = ({username}) => {
               fontWeight={ 600 }
               cursor={ 'pointer' }
               _hover={ { color: "white" } }
-              bg={'transparent'}
+              bg={ 'transparent' }
             >Post</Button>
           </InputRightElement>
         </InputGroup>
       </Flex>
     </Box>
-  )
-}
+  );
+};
 
-export default FeedFooter
+export default FeedFooter;
